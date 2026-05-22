@@ -53,7 +53,10 @@
 })();
 ```
 
-方案B：获取完整参数（22MB，内容最全）
+方案B：获取完整参数（内容最全，含 input/output schema）
+
+注意：runninghub 的 `/object_info` 返回的是包装格式 `{ nodes_info: {...}, checkpoints: [], loras: [] }`，
+节点字典在 `nodes_info` 字段里，不是顶层。直接 `Object.keys(nodeData).length` 只会得到 3。
 
 ```
 (async function() {
@@ -63,8 +66,20 @@
         const response = await fetch('/object_info');
         if (!response.ok) throw new Error(`请求失败: ${response.status}`);
         const nodeData = await response.json();
-        const nodeCount = Object.keys(nodeData).length;
+
+        // runninghub 把节点字典放在 nodes_info 里；原生 ComfyUI 则节点直接在顶层。两种都兼容。
+        const nodesDict = nodeData.nodes_info && typeof nodeData.nodes_info === 'object'
+            ? nodeData.nodes_info
+            : nodeData;
+        const nodeCount = Object.keys(nodesDict).length;
         console.log(`✅ 成功获取 ${nodeCount} 个节点`);
+        if (nodeData.checkpoints || nodeData.loras) {
+            console.log(`   附带 checkpoints: ${(nodeData.checkpoints || []).length}, loras: ${(nodeData.loras || []).length}`);
+        }
+        if (nodeCount < 100) {
+            console.warn(`⚠️ 节点数仅 ${nodeCount}，可能页面没加载完，建议刷新后重试`);
+        }
+
         const blob = new Blob([JSON.stringify(nodeData, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -80,4 +95,9 @@
     }
 })();
 ```
+
+### 之前 `_3_nodes.json` 文件名的由来
+
+旧脚本里 `Object.keys(nodeData).length` 数的是顶层 key 数量，runninghub 返回 `{nodes_info, checkpoints, loras}` 三个字段，所以文件名被命成了 `_3_nodes`。
+**但文件内容是完整的**，里面 `nodes_info` 字段下有 14000+ 个节点，可以直接用。新脚本已修复这个统计 bug。
 
