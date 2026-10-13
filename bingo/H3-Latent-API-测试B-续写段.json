@@ -1,0 +1,132 @@
+{
+  "id": "h3-latent-test-b-load-widget",
+  "revision": 0,
+  "last_node_id": 3,
+  "last_link_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LLAIDownloadVideo",
+      "pos": [
+        40,
+        140
+      ],
+      "size": [
+        360,
+        210
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "本地路径",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "状态",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LLAIDownloadVideo"
+      },
+      "widgets_values": [
+        "",
+        "output/h3_context/testA",
+        "",
+        1800
+      ],
+      "title": "从URL下载(LLAIDownloadVideo)"
+    },
+    {
+      "id": 2,
+      "type": "MiniMaxH3MotionContextLoadLatent",
+      "pos": [
+        460,
+        140
+      ],
+      "size": [
+        460,
+        190
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3MotionContextLoadLatent"
+      },
+      "widgets_values": [
+        "h3_context/testA",
+        1
+      ],
+      "title": "加载Latent(Motion-Context)"
+    },
+    {
+      "id": 3,
+      "type": "PreviewLatent",
+      "pos": [
+        980,
+        150
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewLatent"
+      },
+      "widgets_values": [],
+      "title": "预览验证"
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      3,
+      0,
+      "LATENT"
+    ]
+  ],
+  "groups": [],
+  "definitions": {
+    "subgraphs": []
+  },
+  "config": {},
+  "extra": {
+    "frontendVersion": "1.40.0"
+  },
+  "version": 0.4
+}
