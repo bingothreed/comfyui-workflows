@@ -1,0 +1,365 @@
+{
+  "id": "breeze-tts2-multispeaker",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "BreezeTTS2LoadModel",
+      "pos": [
+        80,
+        160
+      ],
+      "size": [
+        420,
+        210
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BREEZE_TTS2_MODEL",
+          "type": "BREEZE_TTS2_MODEL",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2LoadModel"
+      },
+      "widgets_values": [
+        "int8 hybrid (recommended)",
+        "auto",
+        "auto",
+        "auto",
+        "eager",
+        false
+      ]
+    },
+    {
+      "id": 2,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        620,
+        60
+      ],
+      "size": [
+        430,
+        280
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BREEZE_SPEAKER",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": []
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker"
+      },
+      "widgets_values": [
+        "Alice",
+        "none",
+        "",
+        true,
+        "温暖清晰的年轻女声，语调平和，普通话标准，语速适中。",
+        4.0
+      ]
+    },
+    {
+      "id": 3,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        620,
+        400
+      ],
+      "size": [
+        430,
+        280
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BREEZE_SPEAKER",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": []
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker"
+      },
+      "widgets_values": [
+        "Bob",
+        "none",
+        "",
+        true,
+        "低沉稳重的男声，略带磁性，语速稍慢，普通话标准。",
+        4.0
+      ]
+    },
+    {
+      "id": 4,
+      "type": "BreezeTTS2MultiSpeaker",
+      "pos": [
+        1180,
+        180
+      ],
+      "size": [
+        560,
+        430
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "link": 1
+        },
+        {
+          "name": "speaker_1",
+          "type": "BREEZE_SPEAKER",
+          "link": 2,
+          "shape": 7
+        },
+        {
+          "name": "speaker_2",
+          "type": "BREEZE_SPEAKER",
+          "link": 3,
+          "shape": 7
+        },
+        {
+          "name": "speaker_3",
+          "type": "BREEZE_SPEAKER",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "speaker_4",
+          "type": "BREEZE_SPEAKER",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "speaker_5",
+          "type": "BREEZE_SPEAKER",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "speaker_6",
+          "type": "BREEZE_SPEAKER",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "speaker_7",
+          "type": "BREEZE_SPEAKER",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "speaker_8",
+          "type": "BREEZE_SPEAKER",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            4,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2MultiSpeaker"
+      },
+      "widgets_values": [
+        "Alice: 嘿 Bob，演示录音录完了吗？\nBob: (叹气) 快了，就差最后一条。\nAlice: (笑) 你一小时前也是这么说的！\nBob: (清嗓) 这次是真的，录完就发你。",
+        0.3,
+        1500,
+        0.9,
+        50,
+        1.0,
+        1.1,
+        0.9,
+        50,
+        1.0,
+        42
+      ]
+    },
+    {
+      "id": 5,
+      "type": "PreviewAudio",
+      "pos": [
+        1880,
+        160
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 6,
+      "type": "SaveAudio",
+      "pos": [
+        1880,
+        300
+      ],
+      "size": [
+        260,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "audio/BreezeTTS2"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      4,
+      0,
+      "BREEZE_TTS2_MODEL"
+    ],
+    [
+      2,
+      2,
+      0,
+      4,
+      1,
+      "BREEZE_SPEAKER"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      2,
+      "BREEZE_SPEAKER"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      0,
+      "AUDIO"
+    ],
+    [
+      5,
+      4,
+      0,
+      6,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [],
+  "definitions": {
+    "subgraphs": []
+  },
+  "config": {},
+  "extra": {
+    "frontendVersion": "1.40.0"
+  },
+  "version": 0.4
+}

@@ -1,0 +1,2741 @@
+{
+  "id": "7811df64-b0c7-4f61-839d-4258be70eea7",
+  "revision": 0,
+  "last_node_id": 40,
+  "last_link_id": 33,
+  "nodes": [
+    {
+      "id": 7,
+      "type": "BreezeTTS2LoadModel",
+      "pos": [
+        1470,
+        120
+      ],
+      "size": [
+        622.8915405273438,
+        179.71575927734375
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "dtype",
+          "name": "dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "dtype"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          }
+        },
+        {
+          "label": "decode_mode",
+          "name": "decode_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "decode_mode"
+          }
+        },
+        {
+          "label": "download_if_missing",
+          "name": "download_if_missing",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "download_if_missing"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2LoadModel",
+        "cnr_id": "comfyui-breeze-tts-2",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bf16 (best quality)",
+        "auto",
+        "auto",
+        "auto",
+        "cuda_graphs",
+        false
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 10,
+      "type": "PreviewAudio",
+      "pos": [
+        0,
+        120
+      ],
+      "size": [
+        270,
+        88
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 7
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAudio",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 6,
+      "type": "SaveAudioAdvanced",
+      "pos": [
+        2717.50537109375,
+        120
+      ],
+      "size": [
+        210,
+        106
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 6
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "label": "format",
+          "name": "format",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "format"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveAudioAdvanced",
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        "mp3",
+        "V0"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 5,
+      "type": "BreezeTTS2MultiSpeaker",
+      "pos": [
+        2092.8916015625,
+        120
+      ],
+      "size": [
+        624.6138305664062,
+        1174.628173828125
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "link": 1
+        },
+        {
+          "label": "speaker_1",
+          "name": "speaker_1",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER",
+          "link": 2
+        },
+        {
+          "label": "speaker_2",
+          "name": "speaker_2",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER",
+          "link": 3
+        },
+        {
+          "label": "speaker_3",
+          "name": "speaker_3",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER",
+          "link": 4
+        },
+        {
+          "label": "speaker_4",
+          "name": "speaker_4",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_5",
+          "name": "speaker_5",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_6",
+          "name": "speaker_6",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_7",
+          "name": "speaker_7",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_8",
+          "name": "speaker_8",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        },
+        {
+          "label": "pause_between_speakers",
+          "name": "pause_between_speakers",
+          "type": "FLOAT",
+          "widget": {
+            "name": "pause_between_speakers"
+          }
+        },
+        {
+          "label": "max_new_tokens",
+          "name": "max_new_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_new_tokens"
+          }
+        },
+        {
+          "label": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          }
+        },
+        {
+          "label": "top_k",
+          "name": "top_k",
+          "type": "INT",
+          "widget": {
+            "name": "top_k"
+          }
+        },
+        {
+          "label": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          }
+        },
+        {
+          "label": "repetition_penalty",
+          "name": "repetition_penalty",
+          "type": "FLOAT",
+          "widget": {
+            "name": "repetition_penalty"
+          }
+        },
+        {
+          "label": "depth_temperature",
+          "name": "depth_temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_temperature"
+          }
+        },
+        {
+          "label": "depth_top_k",
+          "name": "depth_top_k",
+          "type": "INT",
+          "widget": {
+            "name": "depth_top_k"
+          }
+        },
+        {
+          "label": "depth_top_p",
+          "name": "depth_top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_top_p"
+          }
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            6,
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2MultiSpeaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "小雨: 你们看这张，昨天晚上 10 点拍的，居然比白天的还好看。\n阿杰: [笑] 你确定？我怎么觉得我在里面像个路人。\n安安: 哈哈，你本来就是路人啊。对了，小雨，你把照片发给我，我想拿这张发到 YouTube，顺便 @一下昨天给我们推荐这家店的人。",
+        0.3,
+        1500,
+        0.9,
+        50,
+        1,
+        1.1,
+        0.9,
+        50,
+        1,
+        2111480648,
+        "randomize"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 2,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        670,
+        120
+      ],
+      "size": [
+        400,
+        356
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "name",
+          "name": "name",
+          "type": "STRING",
+          "widget": {
+            "name": "name"
+          }
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          }
+        },
+        {
+          "label": "auto_transcribe_if_empty",
+          "name": "auto_transcribe_if_empty",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_transcribe_if_empty"
+          }
+        },
+        {
+          "label": "instruction",
+          "name": "instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "instruction"
+          }
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "speaker",
+          "name": "speaker",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            4
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        },
+        {
+          "label": "transcript",
+          "name": "transcript",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "安安",
+        "e626ceedfa693f0d3ed41447fb5ca8d8d10f05d5bdc9f3883c2e74605f1bc23f.mp3",
+        null,
+        "",
+        "",
+        "今天难得不用工作，我一个人去了海边。坐在熟悉的咖啡店里，看着窗外慢慢落下的夕阳，突然觉得，偶尔什么都不做，也是一件很幸福的事情。",
+        "",
+        ""
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 1,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        270,
+        120
+      ],
+      "size": [
+        400,
+        356
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "name",
+          "name": "name",
+          "type": "STRING",
+          "widget": {
+            "name": "name"
+          }
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          }
+        },
+        {
+          "label": "auto_transcribe_if_empty",
+          "name": "auto_transcribe_if_empty",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_transcribe_if_empty"
+          }
+        },
+        {
+          "label": "instruction",
+          "name": "instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "instruction"
+          }
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "speaker",
+          "name": "speaker",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            3
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        },
+        {
+          "label": "transcript",
+          "name": "transcript",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "阿杰",
+        "b7fbc802e83d31aec66784d7ac4a037f0debc91850fbbf62a974aefec087b404.mp3",
+        null,
+        "",
+        "",
+        "今天难得不用工作，我一个人去了海边。坐在熟悉的咖啡店里，看着窗外慢慢落下的夕阳，突然觉得，偶尔什么都不做，也是一件很幸福的事情。",
+        "",
+        ""
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 4,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        1070,
+        120
+      ],
+      "size": [
+        400,
+        356
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "name",
+          "name": "name",
+          "type": "STRING",
+          "widget": {
+            "name": "name"
+          }
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          }
+        },
+        {
+          "label": "auto_transcribe_if_empty",
+          "name": "auto_transcribe_if_empty",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_transcribe_if_empty"
+          }
+        },
+        {
+          "label": "instruction",
+          "name": "instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "instruction"
+          }
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "speaker",
+          "name": "speaker",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            2
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        },
+        {
+          "label": "transcript",
+          "name": "transcript",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "小雨",
+        "8645f41649c042e9e662cab5228943026de88a1f4fa8cba92dc341786a77609d.mp3",
+        null,
+        "",
+        "",
+        "今天难得不用工作，我一个人去了海边。坐在熟悉的咖啡店里，看着窗外慢慢落下的夕阳，突然觉得，偶尔什么都不做，也是一件很幸福的事情。",
+        "",
+        ""
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 12,
+      "type": "孤海注释",
+      "pos": [
+        -658.3291015625,
+        -412.16998291015625
+      ],
+      "size": [
+        4244.16357421875,
+        188.47705078125
+      ],
+      "flags": {
+        "pinned": true,
+        "allow_interaction": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": "粉丝福利：点击\"右上角自己的头像\">邀请码>填写邀请码：【wefjn44t】送1000RH币",
+        "fontSize": 111,
+        "fontColor": "#ff2929",
+        "backgroundColor": "#1B4669",
+        "backgroundAlpha": 0.25,
+        "borderRadius": 20,
+        "padding": 12,
+        "lineHeight": 3,
+        "textAlign": "center",
+        "stroke": true,
+        "widget_ue_connectable": {}
+      },
+      "color": "#fff0",
+      "bgcolor": "transparent"
+    },
+    {
+      "id": 13,
+      "type": "孤海注释",
+      "pos": [
+        -16.1826171875,
+        -140.6992645263672
+      ],
+      "size": [
+        3066.3857421875,
+        210.6992645263672
+      ],
+      "flags": {
+        "pinned": true,
+        "allow_interaction": true
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": "每天登录还有100币  邀请码：【wefjn44t】送1000RH币",
+        "fontSize": 111,
+        "fontColor": "#e629ff",
+        "backgroundColor": "#1B4669",
+        "backgroundAlpha": 0.25,
+        "borderRadius": 20,
+        "padding": 12,
+        "lineHeight": 3,
+        "textAlign": "center",
+        "stroke": true,
+        "widget_ue_connectable": {}
+      },
+      "color": "#fff0",
+      "bgcolor": "transparent"
+    },
+    {
+      "id": 14,
+      "type": "UNETLoader",
+      "pos": [
+        3012.34326171875,
+        192.654296875
+      ],
+      "size": [
+        355.13226318359375,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "anima_baseV10.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3013.39208984375,
+        186.26171875
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 8
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260805-1785928763617.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 16,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3016.60107421875,
+        186.7001953125
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 9
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260805-1785928834119.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 17,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3015.07373046875,
+        184.4697265625
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 10
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260805-1785928865384.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 18,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3015.62060546875,
+        183.4052734375
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 11
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260805-1785928902681.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 19,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3006.34716796875,
+        175.68359375
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 12
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787668061458001.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 20,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3009.76513671875,
+        177.78125
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 13
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787668254327002.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 21,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3011.04833984375,
+        178.94140625
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787668654591003.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 22,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3007.55419921875,
+        184.1455078125
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 15
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787668744651004.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 23,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3012.61083984375,
+        183.8681640625
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 16
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787668784644005.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 24,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3016.04638671875,
+        182.9033203125
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 17
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787669240880006.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 25,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3003.00537109375,
+        182.5458984375
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 18
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787669272288007.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 26,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3008.96435546875,
+        181.255859375
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 19
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787669308462008.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 27,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3001.17138671875,
+        177.93359375
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 20
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787669338920009.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 28,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3006.17138671875,
+        184.548828125
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 21
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787669378671010.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 29,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3005.04052734375,
+        179.7265625
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 22
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787670088644011.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 30,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3000.32568359375,
+        183.0537109375
+      ],
+      "size": [
+        431.9333190917969,
+        82
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 23
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20260825-1787670120538012.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        3031.77099609375,
+        180.287109375
+      ],
+      "size": [
+        270,
+        262
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 24
+        },
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 25
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 26
+        },
+        {
+          "label": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 27
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            29
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        598626327129635,
+        "fixed",
+        4,
+        4.5,
+        "er_sde",
+        "beta",
+        1
+      ]
+    },
+    {
+      "id": 32,
+      "type": "CLIPTextEncode",
+      "pos": [
+        3015.76708984375,
+        181.0595703125
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 32
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 33,
+      "type": "CLIPLoader",
+      "pos": [
+        3020.00732421875,
+        189.8173828125
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          }
+        },
+        {
+          "label": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            31,
+            32
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "qwen_3_06b_base.safetensors",
+        "stable_diffusion",
+        "default"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "CLIPTextEncode",
+      "pos": [
+        3013.08740234375,
+        184.69921875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 31
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "score_1, score_2, score_3,bad anatomy, bad proportions, deformed anatomy, deformed face, deformed eyes, text, multiple fingers,azyneg, lazyhand, censored, mosaic censoring, photorealistic, realistic, artist name, signature, lowres, bad anatomy, bad hands, text, error, missing fingers, extra fingers, fewer digits, cropped, worst quality, low quality, jpeg artifacts, watermark, username, sketch, jpeg Closed eyes, artifacts, signature, watermark, username, simple background, conjoined, bad ai-generated, shiny clothes, shiny skin, gold skin, white hair, halo,three hands"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "JjkText",
+      "pos": [
+        3042.44287109375,
+        187.80859375
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            33
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "这里不用输入任何提示词，不需要修改"
+      ]
+    },
+    {
+      "id": 36,
+      "type": "EmptyLatentImage",
+      "pos": [
+        3040.00341796875,
+        183.4599609375
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        80,
+        80,
+        1
+      ]
+    },
+    {
+      "id": 37,
+      "type": "solarL_SaveImagesToZip",
+      "pos": [
+        3027.44287109375,
+        182.56640625
+      ],
+      "size": [
+        268.8596496582031,
+        103.14035034179688
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "zip",
+          "name": "zip",
+          "shape": 7,
+          "type": "*",
+          "link": 28
+        },
+        {
+          "label": "命名信息",
+          "name": "命名信息",
+          "shape": 7,
+          "type": "*"
+        },
+        {
+          "label": "zip_filename",
+          "name": "zip_filename",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "zip_filename"
+          }
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "solarL_SaveImagesToZip",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 38,
+      "type": "VAEDecode",
+      "pos": [
+        3032.88818359375,
+        180.744140625
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 29
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            28
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        3028.44677734375,
+        178.1337890625
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            30
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "qwen_image_vae.safetensors"
+      ]
+    },
+    {
+      "id": 40,
+      "type": "Note",
+      "pos": [
+        2932.50537109375,
+        120
+      ],
+      "size": [
+        312.38824462890625,
+        107.38643646240234
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "这里不需要修改提示词，这个模块节点勿动，避免有概率运行失败"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      1,
+      7,
+      0,
+      5,
+      0,
+      "BREEZE_TTS2_MODEL"
+    ],
+    [
+      2,
+      4,
+      0,
+      5,
+      1,
+      "BREEZE_SPEAKER"
+    ],
+    [
+      3,
+      1,
+      0,
+      5,
+      2,
+      "BREEZE_SPEAKER"
+    ],
+    [
+      4,
+      2,
+      0,
+      5,
+      3,
+      "BREEZE_SPEAKER"
+    ],
+    [
+      6,
+      5,
+      0,
+      6,
+      0,
+      "AUDIO"
+    ],
+    [
+      7,
+      5,
+      0,
+      10,
+      0,
+      "AUDIO"
+    ],
+    [
+      8,
+      14,
+      0,
+      15,
+      0,
+      "MODEL"
+    ],
+    [
+      9,
+      15,
+      0,
+      16,
+      0,
+      "MODEL"
+    ],
+    [
+      10,
+      16,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      17,
+      0,
+      18,
+      0,
+      "MODEL"
+    ],
+    [
+      12,
+      18,
+      0,
+      19,
+      0,
+      "MODEL"
+    ],
+    [
+      13,
+      19,
+      0,
+      20,
+      0,
+      "MODEL"
+    ],
+    [
+      14,
+      20,
+      0,
+      21,
+      0,
+      "MODEL"
+    ],
+    [
+      15,
+      21,
+      0,
+      22,
+      0,
+      "MODEL"
+    ],
+    [
+      16,
+      22,
+      0,
+      23,
+      0,
+      "MODEL"
+    ],
+    [
+      17,
+      23,
+      0,
+      24,
+      0,
+      "MODEL"
+    ],
+    [
+      18,
+      24,
+      0,
+      25,
+      0,
+      "MODEL"
+    ],
+    [
+      19,
+      25,
+      0,
+      26,
+      0,
+      "MODEL"
+    ],
+    [
+      20,
+      26,
+      0,
+      27,
+      0,
+      "MODEL"
+    ],
+    [
+      21,
+      27,
+      0,
+      28,
+      0,
+      "MODEL"
+    ],
+    [
+      22,
+      28,
+      0,
+      29,
+      0,
+      "MODEL"
+    ],
+    [
+      23,
+      29,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      24,
+      30,
+      0,
+      31,
+      0,
+      "MODEL"
+    ],
+    [
+      25,
+      32,
+      0,
+      31,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      26,
+      34,
+      0,
+      31,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      27,
+      36,
+      0,
+      31,
+      3,
+      "LATENT"
+    ],
+    [
+      28,
+      38,
+      0,
+      37,
+      0,
+      "*"
+    ],
+    [
+      29,
+      31,
+      0,
+      38,
+      0,
+      "LATENT"
+    ],
+    [
+      30,
+      39,
+      0,
+      38,
+      1,
+      "VAE"
+    ],
+    [
+      31,
+      33,
+      0,
+      34,
+      0,
+      "CLIP"
+    ],
+    [
+      32,
+      33,
+      0,
+      32,
+      0,
+      "CLIP"
+    ],
+    [
+      33,
+      35,
+      0,
+      32,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "处理类 (7)",
+      "bounding": [
+        -30,
+        75,
+        2987.50537109375,
+        1264.628173828125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "ue_links": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "pixaromaGroups": [],
+    "ds": {
+      "scale": 0.45,
+      "offset": [
+        -244.25504896375878,
+        1149.640115102132
+      ]
+    },
+    "frontendVersion": "1.23.0",
+    "KKvideo_latentpreview": false,
+    "KKvideo_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}

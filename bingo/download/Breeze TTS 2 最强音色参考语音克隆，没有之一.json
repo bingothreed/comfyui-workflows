@@ -1,0 +1,3017 @@
+{
+  "id": "8aa43f3a-f29e-43ae-a401-83813def9bcb",
+  "revision": 0,
+  "last_node_id": 35,
+  "last_link_id": 29,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "T8_BreezeTTS_Generate",
+      "pos": [
+        580.593017578125,
+        85.13327026367188
+      ],
+      "size": [
+        330,
+        160
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BREEZE_T8_MODEL",
+          "link": 1
+        },
+        {
+          "label": "request",
+          "name": "request",
+          "type": "BREEZE_T8_REQUEST",
+          "link": 3
+        },
+        {
+          "label": "settings",
+          "name": "settings",
+          "type": "BREEZE_T8_SETTINGS",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "slot_index": 0,
+          "links": [
+            5
+          ]
+        },
+        {
+          "label": "generation_info",
+          "name": "generation_info",
+          "type": "STRING",
+          "slot_index": 1
+        }
+      ],
+      "title": "5 生成音频",
+      "properties": {
+        "Node name for S&R": "T8_BreezeTTS_Generate",
+        "cnr_id": "comfyui-breeze-tts-T8",
+        "ver": "0.2.5",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "CR Prompt Text",
+      "pos": [
+        -1142.8681640625,
+        109.63336181640625
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            9
+          ]
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt Text",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "我们需要认真讨论一下昨晚发生的事情。"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "Apply Whisper",
+      "pos": [
+        622.35791015625,
+        346.82501220703125
+      ],
+      "size": [
+        270,
+        146
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 7
+        },
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "language",
+          "name": "language",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "language"
+          }
+        },
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            8
+          ]
+        },
+        {
+          "label": "segments_alignment",
+          "name": "segments_alignment",
+          "type": "whisper_alignment"
+        },
+        {
+          "label": "words_alignment",
+          "name": "words_alignment",
+          "type": "whisper_alignment"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Apply Whisper",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Belle-whisper-large-v3-zh-punct-ct2-float32",
+        "auto",
+        ""
+      ]
+    },
+    {
+      "id": 4,
+      "type": "T8_BreezeTTS_GenerationSettings",
+      "pos": [
+        -265.40447998046875,
+        266.6152038574219
+      ],
+      "size": [
+        370,
+        360
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "max_new_tokens",
+          "name": "max_new_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_new_tokens"
+          }
+        },
+        {
+          "label": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          }
+        },
+        {
+          "label": "top_k",
+          "name": "top_k",
+          "type": "INT",
+          "widget": {
+            "name": "top_k"
+          }
+        },
+        {
+          "label": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          }
+        },
+        {
+          "label": "repetition_penalty",
+          "name": "repetition_penalty",
+          "type": "FLOAT",
+          "widget": {
+            "name": "repetition_penalty"
+          }
+        },
+        {
+          "label": "depth_temperature",
+          "name": "depth_temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_temperature"
+          }
+        },
+        {
+          "label": "depth_top_k",
+          "name": "depth_top_k",
+          "type": "INT",
+          "widget": {
+            "name": "depth_top_k"
+          }
+        },
+        {
+          "label": "depth_top_p",
+          "name": "depth_top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_top_p"
+          }
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "settings",
+          "name": "settings",
+          "type": "BREEZE_T8_SETTINGS",
+          "slot_index": 0,
+          "links": [
+            4
+          ]
+        }
+      ],
+      "title": "4 生成设置",
+      "properties": {
+        "Node name for S&R": "T8_BreezeTTS_GenerationSettings",
+        "cnr_id": "comfyui-breeze-tts-T8",
+        "ver": "0.2.5",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1500,
+        0.9,
+        50,
+        1,
+        1.1,
+        0.9,
+        50,
+        1,
+        228788701,
+        "randomize"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "T8_BreezeTTS_ModelLoader",
+      "pos": [
+        -261.4804992675781,
+        -5.515338897705078
+      ],
+      "size": [
+        340,
+        210
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "dtype",
+          "name": "dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "dtype"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          }
+        },
+        {
+          "label": "download_if_missing",
+          "name": "download_if_missing",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "download_if_missing"
+          }
+        },
+        {
+          "label": "accept_model_license",
+          "name": "accept_model_license",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "accept_model_license"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BREEZE_T8_MODEL",
+          "slot_index": 0,
+          "links": [
+            1
+          ]
+        },
+        {
+          "label": "model_info",
+          "name": "model_info",
+          "type": "STRING",
+          "slot_index": 1
+        }
+      ],
+      "title": "① 模型加载器 · 先勾选许可证",
+      "properties": {
+        "Node name for S&R": "T8_BreezeTTS_ModelLoader",
+        "cnr_id": "comfyui-breeze-tts-T8",
+        "ver": "0.2.5",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "auto",
+        "auto",
+        "auto",
+        true,
+        true
+      ]
+    },
+    {
+      "id": 7,
+      "type": "SaveAudio",
+      "pos": [
+        960.5931396484375,
+        165.13330078125
+      ],
+      "size": [
+        330,
+        120
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 5
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveAudio",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.60",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "audio/T8_Breeze_direction"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "CR Prompt Text",
+      "pos": [
+        -1140.6533203125,
+        407.72625732421875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            10
+          ]
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt Text",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "语速放慢，语气克制而严肃。"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "T8_BreezeTTS_DirectionRequest",
+      "pos": [
+        134.73948669433594,
+        127.85536193847656
+      ],
+      "size": [
+        420,
+        310
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": 2
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 9
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          },
+          "link": 8
+        },
+        {
+          "label": "direction",
+          "name": "direction",
+          "type": "STRING",
+          "widget": {
+            "name": "direction"
+          },
+          "link": 10
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "request",
+          "name": "request",
+          "type": "BREEZE_T8_REQUEST",
+          "slot_index": 0,
+          "links": [
+            3
+          ]
+        }
+      ],
+      "title": "③ 声音导演 · 填准确逐字稿",
+      "properties": {
+        "Node name for S&R": "T8_BreezeTTS_DirectionRequest",
+        "cnr_id": "comfyui-breeze-tts-T8",
+        "ver": "0.2.5",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "我们需要认真讨论一下昨晚发生的事情。",
+        "请替换为参考音频的准确逐字稿。",
+        "语速放慢，语气克制而严肃。",
+        4
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadAudio",
+      "pos": [
+        -703.18212890625,
+        171.50537109375
+      ],
+      "size": [
+        360,
+        160
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "AUDIO",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "slot_index": 0,
+          "links": [
+            2,
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.60",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "7c373294d8fe1ea7e73d00c7eb0a60e41f29796c9b85e1171045f463d5363b4a.wav",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 12,
+      "type": "BreezeTTS2VoiceDesign",
+      "pos": [
+        -569.6444702148438,
+        -1234.0926513671875
+      ],
+      "size": [
+        400,
+        406
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "link": 11
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 12
+        },
+        {
+          "label": "instruction",
+          "name": "instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "instruction"
+          },
+          "link": 13
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "max_new_tokens",
+          "name": "max_new_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_new_tokens"
+          }
+        },
+        {
+          "label": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          }
+        },
+        {
+          "label": "top_k",
+          "name": "top_k",
+          "type": "INT",
+          "widget": {
+            "name": "top_k"
+          }
+        },
+        {
+          "label": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          }
+        },
+        {
+          "label": "repetition_penalty",
+          "name": "repetition_penalty",
+          "type": "FLOAT",
+          "widget": {
+            "name": "repetition_penalty"
+          }
+        },
+        {
+          "label": "depth_temperature",
+          "name": "depth_temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_temperature"
+          }
+        },
+        {
+          "label": "depth_top_k",
+          "name": "depth_top_k",
+          "type": "INT",
+          "widget": {
+            "name": "depth_top_k"
+          }
+        },
+        {
+          "label": "depth_top_p",
+          "name": "depth_top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_top_p"
+          }
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            14,
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2VoiceDesign",
+        "cnr_id": "comfyui-breeze-tts-2",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "",
+        "",
+        4,
+        1500,
+        0.9,
+        50,
+        1,
+        1.1,
+        0.9,
+        50,
+        1,
+        1317043110,
+        "randomize"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 13,
+      "type": "BreezeTTS2LoadModel",
+      "pos": [
+        -465.64434814453125,
+        -1309.900146484375
+      ],
+      "size": [
+        401.1116943359375,
+        178
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "dtype",
+          "name": "dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "dtype"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          }
+        },
+        {
+          "label": "decode_mode",
+          "name": "decode_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "decode_mode"
+          }
+        },
+        {
+          "label": "download_if_missing",
+          "name": "download_if_missing",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "download_if_missing"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2LoadModel",
+        "cnr_id": "comfyui-breeze-tts-2",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bf16 (best quality)",
+        "auto",
+        "auto",
+        "auto",
+        "cuda_graphs",
+        false
+      ]
+    },
+    {
+      "id": 16,
+      "type": "SaveAudioAdvanced",
+      "pos": [
+        -8.63769817352295,
+        -1002.3555297851562
+      ],
+      "size": [
+        210,
+        106
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 14
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "label": "format",
+          "name": "format",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "format"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveAudioAdvanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        "mp3",
+        "V0"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "PreviewAudio",
+      "pos": [
+        -44.60672378540039,
+        -1188.9091796875
+      ],
+      "size": [
+        270,
+        88
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 15
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAudio",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "CR Text",
+      "pos": [
+        -1140.04638671875,
+        -1290.4244384765625
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "*",
+          "links": [
+            12
+          ]
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Text",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "今天难得不用工作，我一个人去了海边。坐在熟悉的咖啡店里，看着窗外慢慢落下的夕阳，突然觉得，偶尔什么都不做，也是一件很幸福的事情。"
+      ],
+      "color": "#4b5563",
+      "bgcolor": "rgba(21, 23, 27, 0.96)"
+    },
+    {
+      "id": 14,
+      "type": "CR Text",
+      "pos": [
+        -1144.98193359375,
+        -987.1603393554688
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "*",
+          "links": [
+            13
+          ]
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Text",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "年轻女性，声音温柔清澈，音色柔和自然，语速舒缓，吐字清晰，有亲和力，适合生活和治愈类旁白。"
+      ],
+      "color": "#4b5563",
+      "bgcolor": "rgba(21, 23, 27, 0.96)"
+    },
+    {
+      "id": 18,
+      "type": "NormalizeAudioLoudness",
+      "pos": [
+        -645.4314575195312,
+        -420.0953674316406
+      ],
+      "size": [
+        329.1944885253906,
+        58.75892639160156
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 16
+        },
+        {
+          "label": "lufs",
+          "name": "lufs",
+          "type": "FLOAT",
+          "widget": {
+            "name": "lufs"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            17,
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NormalizeAudioLoudness",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        -23
+      ]
+    },
+    {
+      "id": 19,
+      "type": "Apply Whisper",
+      "pos": [
+        -645.4783325195312,
+        -289.1339416503906
+      ],
+      "size": [
+        332.9889831542969,
+        148.2767333984375
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 17
+        },
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "language",
+          "name": "language",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "language"
+          }
+        },
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            22
+          ]
+        },
+        {
+          "label": "segments_alignment",
+          "name": "segments_alignment",
+          "type": "whisper_alignment"
+        },
+        {
+          "label": "words_alignment",
+          "name": "words_alignment",
+          "type": "whisper_alignment"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Apply Whisper",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Belle-whisper-large-v3-zh-punct-ct2-float32",
+        "auto",
+        ""
+      ]
+    },
+    {
+      "id": 20,
+      "type": "SaveAudioAdvanced",
+      "pos": [
+        288.246337890625,
+        -681.083740234375
+      ],
+      "size": [
+        210,
+        106
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 18
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "label": "format",
+          "name": "format",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "format"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveAudioAdvanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        "mp3",
+        "V0"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "BreezeTTS2LoadModel",
+      "pos": [
+        -642.8230590820312,
+        -668.648193359375
+      ],
+      "size": [
+        327.3743591308594,
+        181.38534545898438
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "dtype",
+          "name": "dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "dtype"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          }
+        },
+        {
+          "label": "decode_mode",
+          "name": "decode_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "decode_mode"
+          }
+        },
+        {
+          "label": "download_if_missing",
+          "name": "download_if_missing",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "download_if_missing"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2LoadModel",
+        "cnr_id": "comfyui-breeze-tts-2",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bf16 (best quality)",
+        "auto",
+        "auto",
+        "auto",
+        "cuda_graphs",
+        false
+      ]
+    },
+    {
+      "id": 24,
+      "type": "BreezeTTS2VoiceClone",
+      "pos": [
+        -212.7492218017578,
+        -672.7569580078125
+      ],
+      "size": [
+        440,
+        500
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "link": 19
+        },
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": 20
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 21
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          },
+          "link": 22
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "max_new_tokens",
+          "name": "max_new_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_new_tokens"
+          }
+        },
+        {
+          "label": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          }
+        },
+        {
+          "label": "top_k",
+          "name": "top_k",
+          "type": "INT",
+          "widget": {
+            "name": "top_k"
+          }
+        },
+        {
+          "label": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          }
+        },
+        {
+          "label": "repetition_penalty",
+          "name": "repetition_penalty",
+          "type": "FLOAT",
+          "widget": {
+            "name": "repetition_penalty"
+          }
+        },
+        {
+          "label": "depth_temperature",
+          "name": "depth_temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_temperature"
+          }
+        },
+        {
+          "label": "depth_top_k",
+          "name": "depth_top_k",
+          "type": "INT",
+          "widget": {
+            "name": "depth_top_k"
+          }
+        },
+        {
+          "label": "depth_top_p",
+          "name": "depth_top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_top_p"
+          }
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "slot_index": 0,
+          "links": [
+            18,
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2VoiceClone",
+        "cnr_id": "comfyui-breeze-tts-2",
+        "ver": "0.1.0",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "reference_text": true
+          },
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {
+          "reference_text": true
+        }
+      },
+      "widgets_values": [
+        "",
+        "",
+        1,
+        1500,
+        0.9,
+        50,
+        1,
+        1.1,
+        0.9,
+        50,
+        1,
+        1526248169,
+        "fixed"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 25,
+      "type": "PreviewAudio",
+      "pos": [
+        289.390869140625,
+        -505.2139892578125
+      ],
+      "size": [
+        270,
+        88
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 23
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAudio",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 22,
+      "type": "LoadAudio",
+      "pos": [
+        -1130.1297607421875,
+        -613.8233032226562
+      ],
+      "size": [
+        394.01641845703125,
+        136
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "AUDIO",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "slot_index": 0,
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio",
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {},
+        "widgets": {
+          "upload": "audio"
+        }
+      },
+      "widgets_values": [
+        "ab8404d674143c9a6120a15960c57f43a5806f0dadf13392e8d27d455494d943.mp3",
+        null,
+        null
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 23,
+      "type": "CR Text",
+      "pos": [
+        -1108.996337890625,
+        -372.3104553222656
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "*",
+          "links": [
+            21
+          ]
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Text",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "终于到了！折腾了一整天，晚上 8 点多才到酒店。[笑] 结果刚放下行李，我就又跑出去看海了——你们看，这个夕阳是不是美得有点过分？"
+      ],
+      "color": "#4b5563",
+      "bgcolor": "rgba(21, 23, 27, 0.96)"
+    },
+    {
+      "id": 27,
+      "type": "PreviewAudio",
+      "pos": [
+        2669.220947265625,
+        -448.1504211425781
+      ],
+      "size": [
+        270,
+        88
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 24
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAudio",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 28,
+      "type": "SaveAudioAdvanced",
+      "pos": [
+        2669.220947265625,
+        -623.2745971679688
+      ],
+      "size": [
+        210,
+        106
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 25
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "label": "format",
+          "name": "format",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "format"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveAudioAdvanced",
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        "mp3",
+        "V0"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 30,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        1451.0521240234375,
+        -145.32257080078125
+      ],
+      "size": [
+        400,
+        356
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "name",
+          "name": "name",
+          "type": "STRING",
+          "widget": {
+            "name": "name"
+          }
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          }
+        },
+        {
+          "label": "auto_transcribe_if_empty",
+          "name": "auto_transcribe_if_empty",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_transcribe_if_empty"
+          }
+        },
+        {
+          "label": "instruction",
+          "name": "instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "instruction"
+          }
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "speaker",
+          "name": "speaker",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            28
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        },
+        {
+          "label": "transcript",
+          "name": "transcript",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "阿杰",
+        "b7fbc802e83d31aec66784d7ac4a037f0debc91850fbbf62a974aefec087b404.mp3",
+        null,
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 31,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        1458.5311279296875,
+        -552.9063110351562
+      ],
+      "size": [
+        400,
+        356
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "name",
+          "name": "name",
+          "type": "STRING",
+          "widget": {
+            "name": "name"
+          }
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          }
+        },
+        {
+          "label": "auto_transcribe_if_empty",
+          "name": "auto_transcribe_if_empty",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_transcribe_if_empty"
+          }
+        },
+        {
+          "label": "instruction",
+          "name": "instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "instruction"
+          }
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "speaker",
+          "name": "speaker",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            27
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        },
+        {
+          "label": "transcript",
+          "name": "transcript",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "小雨",
+        "8645f41649c042e9e662cab5228943026de88a1f4fa8cba92dc341786a77609d.mp3",
+        null,
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 34,
+      "type": "BreezeTTS2Speaker",
+      "pos": [
+        1452.8519287109375,
+        266.91412353515625
+      ],
+      "size": [
+        400,
+        356
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "name",
+          "name": "name",
+          "type": "STRING",
+          "widget": {
+            "name": "name"
+          }
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "reference_text",
+          "name": "reference_text",
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          }
+        },
+        {
+          "label": "auto_transcribe_if_empty",
+          "name": "auto_transcribe_if_empty",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_transcribe_if_empty"
+          }
+        },
+        {
+          "label": "instruction",
+          "name": "instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "instruction"
+          }
+        },
+        {
+          "label": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "speaker",
+          "name": "speaker",
+          "type": "BREEZE_SPEAKER",
+          "links": [
+            29
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        },
+        {
+          "label": "transcript",
+          "name": "transcript",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2Speaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "安安",
+        "e626ceedfa693f0d3ed41447fb5ca8d8d10f05d5bdc9f3883c2e74605f1bc23f.mp3",
+        null,
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 26,
+      "type": "BreezeTTS2LoadModel",
+      "pos": [
+        2055.4775390625,
+        -622.0687866210938
+      ],
+      "size": [
+        622.8915405273438,
+        179.71575927734375
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "dtype",
+          "name": "dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "dtype"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          }
+        },
+        {
+          "label": "decode_mode",
+          "name": "decode_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "decode_mode"
+          }
+        },
+        {
+          "label": "download_if_missing",
+          "name": "download_if_missing",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "download_if_missing"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "links": [
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2LoadModel",
+        "cnr_id": "comfyui-breeze-tts-2",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bf16 (best quality)",
+        "auto",
+        "auto",
+        "auto",
+        "cuda_graphs",
+        false
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 32,
+      "type": "Note",
+      "pos": [
+        774.9428100585938,
+        -669.8382568359375
+      ],
+      "size": [
+        428.3834533691406,
+        198.12049865722656
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "英文用 (laugh)、(cough)、(clears throat)、(sigh)； \n中文用 [笑]、[咳嗽]、[清嗓子]、[叹气]"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 29,
+      "type": "BreezeTTS2MultiSpeaker",
+      "pos": [
+        1903.9635009765625,
+        -552.3754272460938
+      ],
+      "size": [
+        624.6138305664062,
+        1174.628173828125
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "breeze_model",
+          "name": "breeze_model",
+          "type": "BREEZE_TTS2_MODEL",
+          "link": 26
+        },
+        {
+          "label": "speaker_1",
+          "name": "speaker_1",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER",
+          "link": 27
+        },
+        {
+          "label": "speaker_2",
+          "name": "speaker_2",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER",
+          "link": 28
+        },
+        {
+          "label": "speaker_3",
+          "name": "speaker_3",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER",
+          "link": 29
+        },
+        {
+          "label": "speaker_4",
+          "name": "speaker_4",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_5",
+          "name": "speaker_5",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_6",
+          "name": "speaker_6",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_7",
+          "name": "speaker_7",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "speaker_8",
+          "name": "speaker_8",
+          "shape": 7,
+          "type": "BREEZE_SPEAKER"
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        },
+        {
+          "label": "pause_between_speakers",
+          "name": "pause_between_speakers",
+          "type": "FLOAT",
+          "widget": {
+            "name": "pause_between_speakers"
+          }
+        },
+        {
+          "label": "max_new_tokens",
+          "name": "max_new_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_new_tokens"
+          }
+        },
+        {
+          "label": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          }
+        },
+        {
+          "label": "top_k",
+          "name": "top_k",
+          "type": "INT",
+          "widget": {
+            "name": "top_k"
+          }
+        },
+        {
+          "label": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          }
+        },
+        {
+          "label": "repetition_penalty",
+          "name": "repetition_penalty",
+          "type": "FLOAT",
+          "widget": {
+            "name": "repetition_penalty"
+          }
+        },
+        {
+          "label": "depth_temperature",
+          "name": "depth_temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_temperature"
+          }
+        },
+        {
+          "label": "depth_top_k",
+          "name": "depth_top_k",
+          "type": "INT",
+          "widget": {
+            "name": "depth_top_k"
+          }
+        },
+        {
+          "label": "depth_top_p",
+          "name": "depth_top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "depth_top_p"
+          }
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            24,
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BreezeTTS2MultiSpeaker",
+        "cnr_id": "comfyui_fearnworksnodes",
+        "ver": "0.1.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "小雨: 你们看这张，昨天晚上 10 点拍的，居然比白天的还好看。\n阿杰: [笑] 你确定？我怎么觉得我在里面像个路人。\n安安: 哈哈，你本来就是路人啊。对了，小雨，你把照片发给我，我想拿这张发到 YouTube，顺便 @一下昨天给我们推荐这家店的人。",
+        0.3,
+        1500,
+        0.9,
+        50,
+        1,
+        1.1,
+        0.9,
+        50,
+        1,
+        2111480648,
+        "randomize"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 33,
+      "type": "MarkdownNote",
+      "pos": [
+        1418.7021484375,
+        -1030.0728759765625
+      ],
+      "size": [
+        637.6148071289062,
+        274.6234130859375
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "# 节点有bug\n# 每次使用手动调整Breeze TTS 2 Speaker节点的cfg_scale=1,填写reference_text=参考音色的文本或开启auto_transcribe_if_empty"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 35,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "pos": [
+        775.1900634765625,
+        -369.1894836425781
+      ],
+      "size": [
+        384.0419006347656,
+        152.8603057861328
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "OPT_CONNECTION",
+          "name": "OPT_CONNECTION",
+          "type": "*"
+        }
+      ],
+      "properties": {
+        "matchColors": "green",
+        "matchTitle": "",
+        "showNav": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "always one",
+        "widget_ue_connectable": {}
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      5,
+      0,
+      "BREEZE_T8_MODEL"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "AUDIO"
+    ],
+    [
+      3,
+      3,
+      0,
+      5,
+      1,
+      "BREEZE_T8_REQUEST"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      2,
+      "BREEZE_T8_SETTINGS"
+    ],
+    [
+      5,
+      5,
+      0,
+      7,
+      0,
+      "AUDIO"
+    ],
+    [
+      7,
+      2,
+      0,
+      8,
+      0,
+      "AUDIO"
+    ],
+    [
+      8,
+      8,
+      0,
+      3,
+      2,
+      "STRING"
+    ],
+    [
+      9,
+      10,
+      0,
+      3,
+      1,
+      "STRING"
+    ],
+    [
+      10,
+      11,
+      0,
+      3,
+      3,
+      "STRING"
+    ],
+    [
+      11,
+      13,
+      0,
+      12,
+      0,
+      "BREEZE_TTS2_MODEL"
+    ],
+    [
+      12,
+      15,
+      0,
+      12,
+      1,
+      "STRING"
+    ],
+    [
+      13,
+      14,
+      0,
+      12,
+      2,
+      "STRING"
+    ],
+    [
+      14,
+      12,
+      0,
+      16,
+      0,
+      "AUDIO"
+    ],
+    [
+      15,
+      12,
+      0,
+      17,
+      0,
+      "AUDIO"
+    ],
+    [
+      16,
+      22,
+      0,
+      18,
+      0,
+      "AUDIO"
+    ],
+    [
+      17,
+      18,
+      0,
+      19,
+      0,
+      "AUDIO"
+    ],
+    [
+      18,
+      24,
+      0,
+      20,
+      0,
+      "AUDIO"
+    ],
+    [
+      19,
+      21,
+      0,
+      24,
+      0,
+      "BREEZE_TTS2_MODEL"
+    ],
+    [
+      20,
+      18,
+      0,
+      24,
+      1,
+      "AUDIO"
+    ],
+    [
+      21,
+      23,
+      0,
+      24,
+      2,
+      "STRING"
+    ],
+    [
+      22,
+      19,
+      0,
+      24,
+      3,
+      "STRING"
+    ],
+    [
+      23,
+      24,
+      0,
+      25,
+      0,
+      "AUDIO"
+    ],
+    [
+      24,
+      29,
+      0,
+      27,
+      0,
+      "AUDIO"
+    ],
+    [
+      25,
+      29,
+      0,
+      28,
+      0,
+      "AUDIO"
+    ],
+    [
+      26,
+      26,
+      0,
+      29,
+      0,
+      "BREEZE_TTS2_MODEL"
+    ],
+    [
+      27,
+      31,
+      0,
+      29,
+      1,
+      "BREEZE_SPEAKER"
+    ],
+    [
+      28,
+      30,
+      0,
+      29,
+      2,
+      "BREEZE_SPEAKER"
+    ],
+    [
+      29,
+      34,
+      0,
+      29,
+      3,
+      "BREEZE_SPEAKER"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 7,
+      "title": "音色克隆+手动情绪控制",
+      "bounding": [
+        -1172.8681640625,
+        -128.46673583984375,
+        2503.4609375,
+        803.5999755859375
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 1,
+      "title": "勿动区",
+      "bounding": [
+        -289.4071350097656,
+        -84.86671447753906,
+        1610,
+        750
+      ],
+      "color": "#3f789e",
+      "font_size": 22,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "设置区",
+      "bounding": [
+        -1162.8681640625,
+        -7.56675386428833,
+        844.4478759765625,
+        648.4244384765625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "台词",
+      "bounding": [
+        -1152.8681640625,
+        36.033302307128906,
+        420,
+        283.5999755859375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "音色要求",
+      "bounding": [
+        -1150.6533203125,
+        334.126220703125,
+        420,
+        283.6000061035156
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "音色参考",
+      "bounding": [
+        -713.18212890625,
+        97.9053955078125,
+        380,
+        243.60000610351562
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 10,
+      "title": "声音设计",
+      "bounding": [
+        -1164.98193359375,
+        -1407.624267578125,
+        1400.373779296875,
+        640.46337890625
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "台词",
+      "bounding": [
+        -1150.04638671875,
+        -1364.0242919921875,
+        420,
+        283.6000061035156
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "音色要求",
+      "bounding": [
+        -1154.98193359375,
+        -1060.7611083984375,
+        420,
+        283.6000061035156
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 11,
+      "title": "声音克隆",
+      "bounding": [
+        -1172.626220703125,
+        -754.6837158203125,
+        1742.017333984375,
+        623.8265380859375
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 12,
+      "title": "音色参考",
+      "bounding": [
+        -1140.1297607421875,
+        -687.42333984375,
+        414.016357421875,
+        219.60000610351562
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 13,
+      "title": "台词",
+      "bounding": [
+        -1118.9964599609375,
+        -445.9104919433594,
+        420,
+        283.6000061035156
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 15,
+      "title": "多人音色克隆对话",
+      "bounding": [
+        1381.347900390625,
+        -716.1339111328125,
+        1630.0965576171875,
+        1368.3070068359375
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "t8_node_version": "0.2.5",
+    "ue_links": [],
+    "pixaromaGroups": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "frontendVersion": "1.23.0",
+    "ds": {
+      "scale": 0.7247295000000004,
+      "offset": [
+        831.498352942195,
+        1306.9014555008841
+      ]
+    },
+    "t8_example_kind": "ui_workflow",
+    "KKvideo_latentpreview": false,
+    "KKvideo_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}
