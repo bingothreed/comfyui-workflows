@@ -36,8 +36,8 @@
       },
       "widgets_values": [
         "",
-        "output/h3_context/testA",
-        "",
+        "output/video",
+        "clip__00001.safetensors",
         1800
       ],
       "title": "从URL下载(LLAIDownloadVideo)"
@@ -70,7 +70,7 @@
         "Node name for S&R": "MiniMaxH3MotionContextLoadLatent"
       },
       "widgets_values": [
-        "h3_context/testA",
+        "video/clip__00001.safetensors",
         1
       ],
       "title": "加载Latent(Motion-Context)"

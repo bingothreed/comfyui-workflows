@@ -77,7 +77,7 @@
         "Node name for S&R": "MiniMaxH3SaveLatent"
       },
       "widgets_values": [
-        "h3_context/testA",
+        "video/clip",
         0
       ],
       "title": "保存Latent(Extender)"
